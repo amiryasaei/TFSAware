@@ -60,9 +60,11 @@ npm test
 | TFSA annual limit | `lib/constants.ts` (`TFSA_ANNUAL_LIMITS` + `MAX_SUPPORTED_YEAR`) | Once a year, when CRA announces it (mid-November) |
 | Corrections email | `components/hisa/HisaTable.tsx` | If it changes |
 | LinkedIn/GitHub links | `components/Dashboard.tsx` footer | Before launch |
+| AI models | `AI_EXPLAIN_MODEL` / `AI_CHAT_MODEL` env vars (defaults: Haiku for explanations, Sonnet for chat) | Only if needs change |
 
 ## Stack
 
-Next.js (App Router) · TypeScript · Tailwind CSS v4 · Anthropic Claude API (`claude-sonnet-4-6`)
-· vitest · deployed on Vercel. No other runtime dependencies — the chart and count-up animation
-are hand-rolled SVG/rAF to keep the bundle small.
+Next.js (App Router) · TypeScript · Tailwind CSS v4 · Anthropic Claude API (hybrid:
+`claude-haiku-4-5` for inline explanations, `claude-sonnet-4-6` for chat) · vitest · deployed
+on Vercel. No other runtime dependencies — the chart and count-up animation are hand-rolled
+SVG/rAF to keep the bundle small.

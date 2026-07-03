@@ -3,7 +3,12 @@ import { getCurrentYear } from "@/lib/constants";
 
 export const runtime = "nodejs";
 
-const MODEL = "claude-sonnet-4-6";
+// Hybrid model strategy: inline explanations only narrate numbers the app has
+// already computed, so the fast/cheap model is enough; chat reasons about CRA
+// rules on its own, so it gets the smarter model. Override either from the
+// environment (e.g. in Vercel) without a code change.
+const EXPLAIN_MODEL = process.env.AI_EXPLAIN_MODEL ?? "claude-haiku-4-5";
+const CHAT_MODEL = process.env.AI_CHAT_MODEL ?? "claude-sonnet-4-6";
 const MAX_CHAT_MESSAGES = 24;
 const MAX_MESSAGE_CHARS = 2000;
 
@@ -156,10 +161,12 @@ export async function POST(req: Request): Promise<Response> {
 
   const client = new Anthropic();
   const stream = client.messages.stream({
-    model: MODEL,
+    model: mode === "chat" ? CHAT_MODEL : EXPLAIN_MODEL,
     max_tokens: maxTokens,
     thinking: { type: "disabled" },
-    output_config: { effort: "low" },
+    // `effort` is a Sonnet/Opus-tier parameter — Haiku rejects it, so it only
+    // goes on chat requests. Keep this conditional if you swap models.
+    ...(mode === "chat" ? { output_config: { effort: "low" as const } } : {}),
     system,
     messages,
   });
