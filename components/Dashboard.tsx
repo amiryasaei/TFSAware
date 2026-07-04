@@ -131,7 +131,7 @@ export function Dashboard() {
           </p>
           <p>CRA limits and HISA rates last updated July 2026.</p>
           <p>
-            Built by Amir ·{" "}
+            Built by Amir Yasaei ·{" "}
             <a
               href="https://www.linkedin.com/"
               target="_blank"
@@ -139,15 +139,6 @@ export function Dashboard() {
               className="text-accent underline underline-offset-2"
             >
               LinkedIn
-            </a>{" "}
-            ·{" "}
-            <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent underline underline-offset-2"
-            >
-              GitHub
             </a>
           </p>
         </div>
