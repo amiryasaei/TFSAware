@@ -37,6 +37,12 @@ yarn-error.log*
 # local Claude Code settings
 .claude/settings.local.json
 
+# local-only docs (owner notes, AI-agent guidance, launch drafts)
+CLAUDE.md
+AGENTS.md
+NOTES.md
+docs/
+
 # vercel
 .vercel
 
