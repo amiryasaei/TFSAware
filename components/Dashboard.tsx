@@ -133,7 +133,7 @@ export function Dashboard() {
           <p>
             Built by Amir Yasaei ·{" "}
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/amir-yasaei"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent underline underline-offset-2"
